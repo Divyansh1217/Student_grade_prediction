@@ -18,3 +18,14 @@ st.write("Accuracy:",accuracy)
 predictions = linear_reg.predict(x_test)
 st.write("Mean Square Error",mse(y_test,predictions))
 st.write("Mean Absolute Error",mae(y_test,predictions))
+
+import pickle
+with open("pickle_model",wb) as file:
+  pickle.dump(linear_regression,file)
+with open("pickle_model", "rb") as file:
+    model = pickle.load(file)
+predictions = model.predict(x_test)
+
+for i in range(len(predictions)):
+    print(predictions[x], x_test[x], [y_test[x]])
+
